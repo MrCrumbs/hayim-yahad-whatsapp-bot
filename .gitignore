@@ -1,0 +1,8 @@
+.~lock.contacts.csv#
+conv.txt
+contacts.txt
+*.csv
+whatsapp-bot-venv
+__pycache__/*
+*.py[cod]
+.vscode

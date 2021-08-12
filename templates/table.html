@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	padding: 8px;
+	text-align: right;
+}
+
+input[type=checkbox] {
+    position: relative;
+    height: 30px;
+}
+
+.container { 
+  height: 50px;
+  position: relative;
+}
+
+.center {
+  height: 50px;
+  width: 100px;
+  margin: 0;
+  position: absolute;
+  right: 0;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+</head>
+	<body>
+		<form action="/conversation" method="post">
+		<div class="container">
+		<input class="center" type="submit" name="delete_button" value="מחק">
+		</div>
+		<table>
+			<tbody>
+				<tr>
+					{% for item in data_list[0] %}
+					<td>
+						{{ item }}
+					</td>
+					{% endfor %}
+				</tr>
+				{% for item in data_list[1:] %}
+					<tr>
+						{% for i in range(item|length) %}
+							<td>
+							{% if i == 0 %}
+							<input type="checkbox" name="number" value="{{ item[i] }}"/>
+							{% endif %}
+								{% for line in item[i].split('\n') %}
+								{{ line }}
+								<br />
+								{% endfor %}
+							</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		</form>
+	</body>
+</html>
